@@ -3,5 +3,5 @@ from os import listdir
 # Create your views here.
 
 def home(request):
-    files = listdir('../')
+    files = listdir('./files')
     return render(request, 'ftp/home.html', {'files': files})

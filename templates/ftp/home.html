@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<ul>
+{% extends 'base.html' %}
 
-<h1>Files In Folder</h1>
-<ul>
-{% for f in files %}
-<li>{{ f }}</li>
-{% endfor %}
-</ul>
-</body>
-</html>
+
+{% block content %}
+    <div class="container">
+        <h1>Files In Folder</h1>
+        <ul>
+            {% for f in files %}
+                <li>{{ f }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}
