@@ -4,10 +4,32 @@
 {% block content %}
     <div class="container">
         <h1>Files In Folder</h1>
-        <ul>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>Filename</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
             {% for f in files %}
-                <li>{{ f }}</li>
+               <tr>
+               <td>{{ forloop.counter }}</td>
+               <td>{{ f }}</td>
+               <td><a href="" class="btn btn-danger">x</a></td>
+               </tr>
             {% endfor %}
-        </ul>
+            </tbody>
+        </table>
     </div>
 {% endblock content %}
+
+
+{% block js %}
+    <script>
+        $('.btn').click(function () {
+            alert('Do You Want To Delete The File');
+        })
+    </script>
+{% endblock js %}
