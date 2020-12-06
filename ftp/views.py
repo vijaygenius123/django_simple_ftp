@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import DestroyAPIView
 from rest_framework.response import Response
-from os import listdir
+from os import listdir, remove
 
 # Create your views here.
 
@@ -13,7 +13,9 @@ class DeleteFileView(DestroyAPIView):
     permission_classes = []
 
     def delete(self, request, *args, **kwargs):
-
-        print(request.data)
-
-        return Response({'Msg': 'Success'})
+        filename = request.data.get('filename')
+        if filename:
+            remove('./files/' + filename)
+            return Response({'Msg': 'Success'})
+        else:
+            return Response({'Msg': 'Error'})

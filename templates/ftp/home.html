@@ -75,7 +75,12 @@
                 },
                 success: function () {
                     console.log('Success');
-                    $('#confirmationModal').modal('hide')
+                    $('#confirmationModal').modal('hide');
+                    location.reload();
+                },
+                error: function (){
+                    $('#confirmationModal').modal('hide');
+
                 }
             })
         });
