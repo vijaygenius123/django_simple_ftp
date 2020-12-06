@@ -3,6 +3,12 @@
 
 {% block content %}
     <div class="container">
+        <div class="alert alert-warning alert-dismissible fade" role="alert">
+            <strong>Error!</strong> Unable to perform action
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <h1>Files In Folder</h1>
         <table class="table">
             <thead class="thead-dark">
@@ -78,9 +84,9 @@
                     $('#confirmationModal').modal('hide');
                     location.reload();
                 },
-                error: function (){
+                error: function () {
                     $('#confirmationModal').modal('hide');
-
+                    $('.alert').addClass('show');
                 }
             })
         });
