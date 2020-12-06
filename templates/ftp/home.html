@@ -61,10 +61,24 @@
             $('#fileConfirm').data('filename', fileName);
         });
 
-        $('#fileConfirm').click(function (){
+        $('#fileConfirm').click(function () {
             const fileName = $('#fileConfirm').data('filename');
             console.log(`Delete File ${fileName}`);
-        })
+            $.ajax({
+                url: 'delete/',
+                type: 'DELETE',
+                headers: {
+                    'X-CSRFTOKEN': '{{ csrf_token }}'
+                },
+                data: {
+                    'filename': fileName,
+                },
+                success: function () {
+                    console.log('Success');
+                    $('#confirmationModal').modal('hide')
+                }
+            })
+        });
 
 
     </script>
