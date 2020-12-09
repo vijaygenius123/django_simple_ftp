@@ -3,10 +3,11 @@ from rest_framework.generics import DestroyAPIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_404_NOT_FOUND
 from os import listdir, remove
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required
 def home(request):
     files = listdir('./files')
     return render(request, 'ftp/home.html', {'files': files})
